@@ -1,0 +1,16 @@
+# /etc/systemd/system/kino-bot.service
+[Unit]
+Description=Telegram Kino Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=botuser
+WorkingDirectory=/opt/kino_bot
+ExecStart=/opt/kino_bot/.venv/bin/python main.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
